@@ -17,5 +17,6 @@ def exception_handler(exc, context):
     if response is None:
         return Response({"error_message": "wrong"},
                         status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+    print(exc)
+    print(context)
     return response

@@ -14,6 +14,15 @@ class BaseModel(models.Model):
         # 其他模型在继承此模型后,可以继承表中的字段
         abstract = True
 
+class User(BaseModel):
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = "ts_login_user"
+        verbose_name = "登陆用户"
+        verbose_name_plural = verbose_name
+
 
 class Book(BaseModel):
     book_name = models.CharField(max_length=128)
