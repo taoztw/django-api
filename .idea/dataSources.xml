@@ -15,5 +15,11 @@
         </library>
       </libraries>
     </data-source>
+    <data-source source="LOCAL" name="db.sqlite3" uuid="dae7bc2d-bcef-4666-9833-3831a53a2d5a">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Program Files\feiq\Recv Files\drf_day5\db.sqlite3</jdbc-url>
+    </data-source>
   </component>
 </project>

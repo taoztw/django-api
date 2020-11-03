@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'test_app',
     'seria',
     'model_s',
+    'auth_test'
 ]
 
 # DRF的全局配置
@@ -59,6 +60,27 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.FormParser',    # 解析不带文件的form数据
         'rest_framework.parsers.MultiPartParser'    # 解析带文件的form数据
     ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 默认的认证器
+        'rest_framework.authentication.SessionAuthentication',  # 基于session
+        'rest_framework.authentication.BasicAuthentication',  # Basic
+        'auth_test.authentications.MyAuth',
+    ],
+    # DRF默认的权限配置
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+
+    # DRF频率配置
+    'DEFAULT_THROTTLE_CLASSES': [
+        # 'rest_framework.throttling.UserRateThrottle',
+        'auth_test.throttle.SendMessageRate',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '3/m',
+        'user': '10/day',
+        'send': '1/m',
+    },
     # DRF全局异常处理的方法
     'EXCEPTION_HANDLER': 'seria.exceptions.exception_handler',
 }
